@@ -1,0 +1,53 @@
+﻿@model List<TruckApplication.Models.Entity.TruckEntity>
+
+@{
+    ViewData["Title"] = "Trucks";
+}
+<div style="text-align: center;width:100%">
+    <h4>Trucks</h4>
+</div>
+<p>
+    <a asp-action="Create" class="btn btn-success" >Create New</a>
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Year Of Factory
+            </th>
+            <th>
+                Year Of Model
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearOfFactory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearOfModel)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
